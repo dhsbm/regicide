@@ -1,6 +1,6 @@
-const reg = /\..*\/(.+).js/
+// 动态导入本目录的所有文件，以文件名命名属性导出
 
-// vite 中
+const reg = /\..*\/(.+).js/
 const ModulesFiles = import.meta.globEager('./**/*.js')
 
 const exportFiles = {}

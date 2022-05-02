@@ -1,5 +1,9 @@
 import _ from '@/modules'
 
+/**
+ * @description: 游戏胜利
+ * @return {void}
+ */
 const win = () => {
   const { data, init } = _
   let str = ''

@@ -1,5 +1,9 @@
 import _ from '@/modules'
 
+/**
+ * @description: 阶段2 阶段卡牌效果
+ * @return {Promise<void>}
+ */
 const toPhase2 = async () => {
   const { data, fight, shuffle, transition, drawCard, toPhase3, getCount } = _
 
@@ -30,7 +34,8 @@ const toPhase2 = async () => {
   // 方片抽牌
   if (effect[3] == 1) drawCard(sum)
 
-  setTimeout(() => toPhase3(sum), 500)
+  // 进入阶段3
+  setTimeout(() => toPhase3(sum), 1000)
 }
 
 export default toPhase2

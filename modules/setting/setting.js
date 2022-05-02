@@ -1,5 +1,6 @@
 import { reactive } from 'vue'
 
+// 游戏设置数据
 const setting = reactive({
   upperLimit: 8, // 手牌上限
   infiniteLife: false, // 无限生命

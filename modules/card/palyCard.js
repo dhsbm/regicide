@@ -1,5 +1,10 @@
 import _ from '@/modules'
 
+/**
+ * @description: 检测打出的卡牌是否合规
+ * @param {Array<string>} cards 要打出的卡牌数组
+ * @return {boolean} 是否合规
+ */
 const test = (cards) => {
   const { getCount } = _
 
@@ -26,7 +31,10 @@ const test = (cards) => {
   }
 }
 
-// 出牌
+/**
+ * @description: 打出选择的卡牌
+ * @return {void}
+ */
 const playCard = () => {
   const { data, showTip, toPhase2 } = _
   const sign = test([...data.selectedSet])

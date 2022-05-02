@@ -1,5 +1,10 @@
 import _ from '@/modules'
 
+/**
+ * @description: 修改游戏设置
+ * @param {string} prop 要修改的属性
+ * @return {void}
+ */
 const changeSetting = (prop) => {
   const { setting } = _
   if (prop == 'life') {

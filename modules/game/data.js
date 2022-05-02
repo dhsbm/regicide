@@ -1,11 +1,13 @@
 import { reactive, computed, watch } from 'vue'
 
+// 规则栏目列表
 const rules = [
   ['回合流程', '阶段1: 打出卡牌', '阶段2: 结算效果', '阶段3: 造成伤害', '阶段4: 抵御敌人'],
   ['卡牌效果', '黑桃: 降低攻击', '红桃: 回收卡牌', '梅花: 伤害翻倍', '方片: 抽取卡牌'],
   ['敌人属性', '杰克: 10ATK / 20HP', '皇后: 15ATK / 30HP', '国王: 20ATK / 40HP'],
 ]
 
+// 游戏运行数据
 const data = reactive({
   bossList: [], // 剩余boss
   remainList: [], // 剩余牌堆
@@ -15,19 +17,20 @@ const data = reactive({
   boss: '', // 当前boss
   bossATK: 10, // boss攻击力
   bossHP: 20, // boss生命
-  phase: 0, // 阶段
+  phase: 0, // 当前阶段
   joker1: 1, // 大小王
-  joker2: 1,
-  allow: false, // 是否可操作
-  ruleIndex: 0,
-  showRuleTip: true,
-  showJokerTip: computed(() => data.handSet.size == 0),
+  joker2: 1, // 1表示正面，0表示背面
+  allow: false, // 当前是否可操作
+  ruleIndex: 0, // 显示第几栏规则
+  showRuleTip: true, // 是否显示切换规则提示
+  showJokerTip: false, // 显示翻面Joker的规则提示
   style: {
     // 样式
-    select: {},
-    selects: {},
-    boss: {},
+    select: {}, // 出牌区的样式
+    selects: {}, // 出牌取容器的样式
+    boss: {}, // boss的样式
     discard: 0, // 弃牌堆数目
+    // joker的样式
     joker1: computed(() => {
       if (data.joker1 == 1) {
         return {}
@@ -42,6 +45,7 @@ const data = reactive({
         return { transform: 'rotateY(-180deg)' }
       }
     }),
+    // joker背面的样式
     back1: computed(() => {
       if (data.joker1 == 0) {
         return { transform: 'rotateY(0)' }
@@ -57,6 +61,7 @@ const data = reactive({
       }
     }),
   },
+  // 牌堆卡牌样式列表 卡牌偏移像素
   remainListStyle: computed(() => {
     const len = data.remainList.length
     const styleList = []
@@ -69,6 +74,7 @@ const data = reactive({
     }
     return styleList
   }),
+  // 墓地卡牌样式列表 卡牌偏移像素与图片地址
   discardListStyle: computed(() => {
     const len = data.discardList.length
     const styleList = []
@@ -84,6 +90,7 @@ const data = reactive({
     }
     return styleList
   }),
+  // 手牌卡牌样式列表 图片地址与是否被选中
   handListStyle: computed(() => {
     const styleList = []
     for (const card of data.handSet) {
@@ -97,6 +104,7 @@ const data = reactive({
     }
     return styleList
   }),
+  // 出牌区卡牌样式 图片地址
   selectedListStyle: computed(() => {
     const styleList = []
     for (const card of data.selectedSet) {
@@ -106,15 +114,19 @@ const data = reactive({
     }
     return styleList
   }),
+  // boss图片地址
   bossStyle: computed(() => {
     return {
       backgroundImage: `url(../../static/${data.boss}.png)`,
     }
   }),
+  // 当先显示的规则
   rule: computed(() => rules[data.ruleIndex]),
+  // 剩余生命值
   rest: computed(() => data.joker1 + data.joker2),
 })
 
+// 监听阶段变化，设置当前是否可操作
 watch(
   () => data.phase,
   (now) => {

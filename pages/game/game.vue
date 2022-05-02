@@ -3,6 +3,7 @@
   <update :fun="init"></update>
   <view class="game">
     <view class="top">
+      <!-- boss -->
       <view class="enemy">
         <view class="restBoss">剩余敌人:{{ data.bossList.length }}</view>
         <view class="boss" :style="[data.bossStyle, data.style.boss]"></view>
@@ -31,11 +32,13 @@
         </view>
       </view>
 
+      <!-- 规则 -->
       <view class="rule" @tap="switchRule">
         <view v-for="value of data.rule" :key="value">{{ value }}</view>
         <view v-if="data.showRuleTip" class="tip">点击查看规则</view>
       </view>
 
+      <!-- joker -->
       <view class="joker">
         <view v-if="data.showJokerTip" class="jokerText tip">翻面joker重新抽牌</view>
         <view class="joker1" @tap="abandon('joker1')">
@@ -56,6 +59,7 @@
         </view>
       </view>
 
+      <!-- 出牌区 -->
       <view class="select" v-show="data.phase == 2 || data.phase == 3" :style="data.style.selects">
         <view
           class="selectCard"
@@ -65,13 +69,16 @@
         ></view>
       </view>
 
+      <!-- 按钮区 -->
       <view class="buttons" v-show="data.allow">
         <button @tap="discardCard" :disabled="data.phase !== 4">弃牌</button>
         <button @tap="palyCard" :disabled="data.phase !== 1">出牌</button>
       </view>
     </view>
+
     <view class="bottom">
       <view class="phase">阶段{{ data.phase }}</view>
+      <!-- 手牌 -->
       <view class="hand">
         <view class="handCard" v-for="(item, i) in data.handSet" :key="item" @tap="selectCard(item)">
           <view class="card" :style="data.handListStyle[i]"></view>

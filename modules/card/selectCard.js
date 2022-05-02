@@ -1,6 +1,10 @@
 import _ from '@/modules'
 
-// 选牌
+/**
+ * @description: 选择卡牌/取消选择
+ * @param {string} card 选择的卡牌
+ * @return {void}
+ */
 const selectCard = (card) => {
   const { data } = _
   if (!data.allow) return

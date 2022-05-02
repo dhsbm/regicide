@@ -1,4 +1,8 @@
-// 打乱一个数组  洗牌
+/**
+ * @description: 传入一个数组，返回一个打乱的新数组 洗牌功能
+ * @param {Array} arr 要打乱的数组
+ * @return {Array} 打乱后的新数组
+ */
 const shuffle = (arr) => {
   const newArr = [...arr]
   const len = newArr.length
