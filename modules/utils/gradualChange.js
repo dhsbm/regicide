@@ -2,11 +2,11 @@ import _ from '@/modules'
 
 /**
  * @description: 利用定时器实现数字逐步变化的效果
- * @param {number} target 要变化到的目标值
  * @param {string} property 要变化的属性
+ * @param {number} target 要变化到的目标值
  * @return {void}
  */
-const fight = (target, property) => {
+const gradualChange = (property, target) => {
   const { data } = _
   let sign = target > data[property] ? 1 : -1
   let step = ((target - data[property]) / 10) | 0
@@ -20,4 +20,4 @@ const fight = (target, property) => {
   }, 40)
 }
 
-export default fight
+export default gradualChange

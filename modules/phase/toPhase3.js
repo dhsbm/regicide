@@ -6,19 +6,19 @@ import _ from '@/modules'
  * @return {Promise<void>}
  */
 const toPhase3 = async (sum) => {
-  const { data, fight, getCount, transition, win, toPhase4 } = _
+  const { data, gradualChange, getCount, transition, win, toPhase4 } = _
   data.phase = 3
   // 处理选择区
   let HP = data.bossHP - sum
   // 逐步减少boss hp
-  fight(data.bossHP - sum, 'bossHP')
+  gradualChange('bossHP', HP)
   // 等待出牌区动画
   await transition('select')
   data.discardList.push(...data.selectedSet)
   data.selectedSet.clear()
   // 清除样式
-  data.style.selects = {}
-  data.style.select = {}
+  data.style.playContainer = {}
+  data.style.playCard = {}
   if (HP > 0) {
     // boss存活 进入阶段4
     toPhase4()

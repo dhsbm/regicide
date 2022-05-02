@@ -1,11 +1,11 @@
 import _ from '@/modules'
 
 /**
- * @description: 阶段2 阶段卡牌效果
+ * @description: 阶段2 结算卡牌效果
  * @return {Promise<void>}
  */
 const toPhase2 = async () => {
-  const { data, fight, shuffle, transition, drawCard, toPhase3, getCount } = _
+  const { data, gradualChange, shuffle, transition, drawCard, toPhase3, getCount } = _
 
   data.phase = 2
   // 黑红梅方 4花色
@@ -23,7 +23,7 @@ const toPhase2 = async () => {
   // 梅花，伤害翻倍
   if (effect[2] == 1) sum *= 2
   // 黑桃，降低boss攻击力
-  if (effect[0] == 1) fight(Math.max(0, data.bossATK - sum), 'bossATK')
+  if (effect[0] == 1) gradualChange('bossATK', Math.max(0, data.bossATK - sum))
   // 红桃，回收卡牌
   if (effect[1] == 1) {
     shuffle(data.discardList)

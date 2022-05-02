@@ -13,7 +13,7 @@ const data = reactive({
   remainList: [], // 剩余牌堆
   discardList: [], // 弃牌堆
   handSet: new Set(), // 手上的牌
-  selectedSet: new Set(), // 选择的牌
+  selectedSet: new Set(), // 已选择的牌
   boss: '', // 当前boss
   bossATK: 10, // boss攻击力
   bossHP: 20, // boss生命
@@ -26,8 +26,8 @@ const data = reactive({
   showJokerTip: false, // 显示翻面Joker的规则提示
   style: {
     // 样式
-    select: {}, // 出牌区的样式
-    selects: {}, // 出牌取容器的样式
+    playCard: {}, // 出牌区卡牌样式
+    playContainer: {}, // 出牌取容器的样式
     boss: {}, // boss的样式
     discard: 0, // 弃牌堆数目
     // joker的样式
@@ -62,7 +62,7 @@ const data = reactive({
     }),
   },
   // 牌堆卡牌样式列表 卡牌偏移像素
-  remainListStyle: computed(() => {
+  remainStyleList: computed(() => {
     const len = data.remainList.length
     const styleList = []
     const d = Math.floor(len / 10) + 1
@@ -75,7 +75,7 @@ const data = reactive({
     return styleList
   }),
   // 墓地卡牌样式列表 卡牌偏移像素与图片地址
-  discardListStyle: computed(() => {
+  discardStyleList: computed(() => {
     const len = data.discardList.length
     const styleList = []
     const d = Math.floor(len / 10) + 1
@@ -91,7 +91,7 @@ const data = reactive({
     return styleList
   }),
   // 手牌卡牌样式列表 图片地址与是否被选中
-  handListStyle: computed(() => {
+  handStyleList: computed(() => {
     const styleList = []
     for (const card of data.handSet) {
       const style = {}
@@ -105,7 +105,7 @@ const data = reactive({
     return styleList
   }),
   // 出牌区卡牌样式 图片地址
-  selectedListStyle: computed(() => {
+  selectedStyleList: computed(() => {
     const styleList = []
     for (const card of data.selectedSet) {
       const style = {}

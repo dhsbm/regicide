@@ -18,14 +18,14 @@
         <view class="remainText">牌堆:{{ data.remainList.length }}</view>
         <view class="remain">
           <!-- 虽然不知道为什么，但如果这里以card为key，在放弃时移动端会出现bug -->
-          <view class="remainBackground" v-for="(card, i) in data.remainList" :style="data.remainListStyle[i]"></view>
+          <view class="remainBackground" v-for="(card, i) in data.remainList" :style="data.remainStyleList[i]"></view>
         </view>
         <!-- 墓地 -->
         <view class="discardText">墓地:{{ data.discardList.length }}</view>
         <view class="discard">
           <view
             class="discardBackground"
-            :style="data.discardListStyle[i]"
+            :style="data.discardStyleList[i]"
             v-for="(card, i) in data.discardList"
             :key="card"
           ></view>
@@ -60,11 +60,11 @@
       </view>
 
       <!-- 出牌区 -->
-      <view class="select" v-show="data.phase == 2 || data.phase == 3" :style="data.style.selects">
+      <view class="play" v-show="data.phase == 2 || data.phase == 3" :style="data.style.playContainer">
         <view
-          class="selectCard"
+          class="playCard"
           v-for="(item, i) in data.selectedSet"
-          :style="[data.selectedListStyle[i], data.style.select]"
+          :style="[data.selectedStyleList[i], data.style.playCard]"
           :key="item"
         ></view>
       </view>
@@ -81,7 +81,7 @@
       <!-- 手牌 -->
       <view class="hand">
         <view class="handCard" v-for="(item, i) in data.handSet" :key="item" @tap="selectCard(item)">
-          <view class="card" :style="data.handListStyle[i]"></view>
+          <view class="card" :style="data.handStyleList[i]"></view>
         </view>
       </view>
     </view>
@@ -284,7 +284,7 @@ export default {
     }
 
     // 打牌区
-    .select {
+    .play {
       position: absolute;
       top: 190px;
       display: flex;
@@ -295,7 +295,7 @@ export default {
       justify-content: center;
       transition: all 0.5s;
 
-      .selectCard {
+      .playCard {
         height: 63px;
         width: 45px;
         background-size: 100% 100%;

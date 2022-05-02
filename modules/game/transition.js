@@ -4,21 +4,21 @@ const transition = (item, sign) => {
   const { data } = _
   return new Promise((reslove, reject) => {
     if (item == 'select') {
-      data.style.selects = {
+      data.style.playContainer = {
         top: '170px',
       }
       setTimeout(() => {
-        data.style.selects = {}
+        data.style.playContainer = {}
       }, 500)
       setTimeout(() => {
         const len = data.discardList.length
         let j = len / 2 / (Math.floor(len / 10) + 1)
-        data.style.selects = {
+        data.style.playContainer = {
           left: 50 + j + 'px',
           top: 170 + j + 'px',
           width: '0',
         }
-        data.style.select = {
+        data.style.playCard = {
           position: 'absolute',
           left: '0',
           height: '84px',
