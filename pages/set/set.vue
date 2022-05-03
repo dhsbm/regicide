@@ -32,6 +32,7 @@
 
 <script setup>
 import _ from '@/modules'
+import update from '@/components/update.vue'
 const { setting, changeSetting } = _
 </script>
 

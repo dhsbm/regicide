@@ -89,7 +89,7 @@
 
 <script>
 import _ from '@/modules/index.js'
-import update from '../../compontents/update.vue'
+import update from '@/components/update.vue'
 export default {
   setup() {
     return {
