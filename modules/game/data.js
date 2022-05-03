@@ -24,12 +24,14 @@ const data = reactive({
   ruleIndex: 0, // 显示第几栏规则
   showRuleTip: true, // 是否显示切换规则提示
   showJokerTip: false, // 显示翻面Joker的规则提示
+  recover: 0, // 要回收的卡牌数
   style: {
     // 样式
     playCard: {}, // 出牌区卡牌样式
-    playContainer: {}, // 出牌取容器的样式
+    playContainer: {
+      top: '190px',
+    }, // 出牌取容器的样式
     boss: {}, // boss的样式
-    discard: 0, // 弃牌堆数目
     // joker的样式
     joker1: computed(() => {
       if (data.joker1 == 1) {
@@ -85,7 +87,7 @@ const data = reactive({
       const value = data.discardList[i]
       style.backgroundImage = `url(../../static/${value}.png)`
       style.transform = `translate(${j}px,${j}px)`
-      if (i < data.style.discard) style.top = '-110px'
+      if (i < data.recover) style.top = '-110px'
       styleList.push(style)
     }
     return styleList

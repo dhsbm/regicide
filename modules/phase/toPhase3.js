@@ -6,14 +6,14 @@ import _ from '@/modules'
  * @return {Promise<void>}
  */
 const toPhase3 = async (sum) => {
-  const { data, gradualChange, getCount, transition, win, toPhase4 } = _
+  const { data, gradualChange, getCount, palyTransition, bossTransition, win, toPhase4 } = _
   data.phase = 3
   // 处理选择区
   let HP = data.bossHP - sum
   // 逐步减少boss hp
   gradualChange('bossHP', HP)
   // 等待出牌区动画
-  await transition('select')
+  await palyTransition()
   data.discardList.push(...data.selectedSet)
   data.selectedSet.clear()
   // 清除样式
@@ -24,7 +24,7 @@ const toPhase3 = async (sum) => {
     toPhase4()
   } else {
     // 播放boss被击败动画
-    await transition('boss', HP == 0)
+    await bossTransition(HP == 0)
     if (data.bossList.length == 0) {
       win()
       return

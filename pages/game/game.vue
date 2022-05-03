@@ -27,7 +27,6 @@
             class="discardBackground"
             :style="data.discardStyleList[i]"
             v-for="(card, i) in data.discardList"
-            :key="card"
           ></view>
         </view>
       </view>
@@ -111,6 +110,7 @@ export default {
   flex-direction: column;
   height: 100vh;
   background-color: #eee;
+  overflow: hidden;
   .top {
     width: 100%;
     flex: 1;

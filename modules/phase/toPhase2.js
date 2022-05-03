@@ -5,7 +5,7 @@ import _ from '@/modules'
  * @return {Promise<void>}
  */
 const toPhase2 = async () => {
-  const { data, gradualChange, shuffle, transition, drawCard, toPhase3, getCount } = _
+  const { data, gradualChange, shuffle, recoverTransition, drawCard, toPhase3, getCount } = _
 
   data.phase = 2
   // 黑红梅方 4花色
@@ -27,9 +27,9 @@ const toPhase2 = async () => {
   // 红桃，回收卡牌
   if (effect[1] == 1) {
     shuffle(data.discardList)
-    await transition('discard', sum)
+    await recoverTransition(sum)
     data.remainList.splice(0, 0, ...data.discardList.splice(0, sum))
-    data.style.discard = 0
+    data.recover = 0
   }
   // 方片抽牌
   if (effect[3] == 1) drawCard(sum)
