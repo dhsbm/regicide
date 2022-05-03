@@ -31,7 +31,7 @@ const init = () => {
   // 抽牌，开始游戏
   nextTick(() => {
     data.phase = 1
-    drawCard(8)
+    drawCard(10)
   })
 }
 

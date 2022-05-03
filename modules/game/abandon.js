@@ -7,10 +7,11 @@ import { nextTick } from 'vue'
  * @return {Promise<void>}
  */
 const abandon = async (joker) => {
-  const { data, recoverTransition, drawCard, shuffle } = _
-  if (!data.allow || data[joker] == 0) return
+  const { data, setting, recoverTransition, drawCard, shuffle } = _
+  if (!data.allow) return
+  if (!setting.infiniteLife && data[joker] == 0) return
   data.allow = false
-  data[joker] = 0
+  data[joker] = 1 - data[joker]
   data.showJokerTip = false
   await recoverTransition(data.discardList.length)
   data.remainList.push(...data.discardList, ...data.handSet)
@@ -20,7 +21,7 @@ const abandon = async (joker) => {
   data.discardList = []
   data.phase = 1
   nextTick(() => {
-    drawCard(8)
+    drawCard(10)
     data.allow = true
   })
 }

@@ -361,7 +361,7 @@ export default {
     }
 
     .hand {
-      width: 520px;
+      width: 620px;
       margin: 0 auto;
       display: flex;
       justify-content: center;
