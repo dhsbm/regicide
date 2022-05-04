@@ -16,7 +16,7 @@ const recoverTransition = (num) => {
         clearInterval(timer)
         setTimeout(() => {
           resolve()
-        }, 1000)
+        }, 500)
       }
     }, 50)
   })

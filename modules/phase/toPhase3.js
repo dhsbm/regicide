@@ -11,7 +11,7 @@ const toPhase3 = async (sum) => {
   // 处理选择区
   let HP = data.bossHP - sum
   // 逐步减少boss hp
-  gradualChange('bossHP', HP)
+  setTimeout(() => gradualChange('bossHP', HP), 500)
   // 等待出牌区动画
   await palyTransition()
   data.discardList.push(...data.selectedSet)

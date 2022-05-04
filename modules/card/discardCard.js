@@ -13,7 +13,7 @@ const discardCard = () => {
   }
   if (sum < data.bossATK) {
     // 总和小于boss攻击力 显示提示
-    showTip('弃牌不可小于boss攻击力', 'none')
+    showTip('弃牌不可小于boss攻击力')
     data.selectedSet.clear()
   } else {
     // 弃牌

@@ -35,7 +35,11 @@ const toPhase2 = async () => {
   if (effect[3] == 1) drawCard(sum)
 
   // 进入阶段3
-  setTimeout(() => toPhase3(sum), 1000)
+  if (effect[1] == 1) {
+    toPhase3(sum)
+  } else {
+    setTimeout(() => toPhase3(sum), 500)
+  }
 }
 
 export default toPhase2
