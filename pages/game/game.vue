@@ -338,6 +338,7 @@ export default {
     /* 规则区 */
     .rule {
       position: absolute;
+      font-size: 14px;
       left: 140px;
       top: 50px;
       view {
