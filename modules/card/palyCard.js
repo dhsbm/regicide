@@ -7,7 +7,6 @@ import _ from '@/modules'
  */
 const test = (cards) => {
   const { getCount, setting } = _
-
   if (cards.length == 0) return false
   if (cards.length == 1) return true
 
@@ -22,6 +21,7 @@ const test = (cards) => {
   for (let i = 1; i < cards.length; i++) {
     if (getCount(cards[i]) !== num1) return false
   }
+
   return true
 }
 
