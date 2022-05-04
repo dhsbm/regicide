@@ -34,7 +34,7 @@
       <!-- 规则 -->
       <view class="rule" @tap="switchRule">
         <view v-for="value of data.rule" :key="value">{{ value }}</view>
-        <view v-if="data.showRuleTip" class="tip">点击查看规则</view>
+        <view v-if="data.showRuleTip" class="tip">点击查看简要规则</view>
       </view>
 
       <!-- joker -->
