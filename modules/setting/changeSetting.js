@@ -11,8 +11,8 @@ const changeSetting = (prop) => {
     setting.infiniteLife = !setting.infiniteLife
   } else if (prop == 'sort') {
     setting.sort = !setting.sort
-  } else if (prop == 'regress') {
-    setting.regress = !setting.regress
+  } else if (prop == 'honor') {
+    setting.honor = !setting.honor
   }
 }
 

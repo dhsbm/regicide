@@ -22,9 +22,9 @@
       </view>
     </view>
     <view class="setting">
-      <view class="settingKey">归化敌人:</view>
-      <view class="settingValue" @tap="changeSetting('regress')">
-        {{ setting.regress ? '开' : '关' }}
+      <view class="settingKey">荣誉击杀:</view>
+      <view class="settingValue" @tap="changeSetting('honor')">
+        {{ setting.honor ? '开' : '关' }}
       </view>
     </view>
   </view>

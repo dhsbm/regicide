@@ -6,7 +6,7 @@ import { nextTick } from 'vue'
  * @return {void}
  */
 const init = () => {
-  const { data, shuffle, drawCard } = _
+  const { data, setting, shuffle, drawCard } = _
   // 初始化牌堆
   let cards = new Array(40).fill(0).map((value, index) => {
     let i = (index / 10) | 0
@@ -16,11 +16,16 @@ const init = () => {
     else if (i == 3) return 'd' + ((index % 10) + 1)
   })
   // 初始化boss列表
-  let bossList = [
-    ...shuffle(['a11', 'b11', 'c11', 'd11']),
-    ...shuffle(['a12', 'b12', 'c12', 'd12']),
-    ...shuffle(['a13', 'b13', 'c13', 'd13']),
-  ]
+  const boss1 = ['a11', 'b11', 'c11', 'd11']
+  const boss2 = ['a12', 'b12', 'c12', 'd12']
+  const boss3 = ['a13', 'b13', 'c13', 'd13']
+  let bossList
+  if (setting.sort) {
+    bossList = [...shuffle(boss1), ...shuffle(boss2), ...shuffle(boss3)]
+  } else {
+    bossList = shuffle([...boss1, ...boss2, ...boss3])
+  }
+
   data.bossList = bossList
   data.joker1 = data.joker2 = 1
   data.remainList = shuffle(cards)

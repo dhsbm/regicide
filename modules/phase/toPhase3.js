@@ -6,7 +6,7 @@ import _ from '@/modules'
  * @return {Promise<void>}
  */
 const toPhase3 = async (sum) => {
-  const { data, gradualChange, getCount, palyTransition, bossTransition, win, toPhase4 } = _
+  const { data, setting, gradualChange, getCount, palyTransition, bossTransition, win, toPhase4 } = _
   data.phase = 3
   // 处理选择区
   let HP = data.bossHP - sum
@@ -24,7 +24,8 @@ const toPhase3 = async (sum) => {
     toPhase4()
   } else {
     // 播放boss被击败动画
-    await bossTransition(HP == 0)
+    let honor = setting.honor
+    await bossTransition(honor && HP == 0)
     if (data.bossList.length == 0) {
       win()
       return
