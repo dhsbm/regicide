@@ -17,6 +17,9 @@ const changeSetting = (prop) => {
     } else {
       showTip('你将面对随机的敌人', 'none')
     }
+  } else if (prop == 'immune') {
+    setting.immune = !setting.immune
+    showTip(`敌人将${setting.immune ? '能够' : '无法'}免疫其花色的效果`, 'none')
   } else if (prop == 'honor') {
     setting.honor = !setting.honor
     showTip(`荣誉击杀功能已${setting.honor ? '开启' : '关闭'}`, 'none')

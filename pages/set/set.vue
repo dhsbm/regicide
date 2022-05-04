@@ -10,6 +10,14 @@
       </view>
     </view>
     <view class="setting">
+      <view class="settingKey">连招上限:</view>
+      <view class="settingValue upperLimit">
+        <view class="dec" @tap="setting.comboLimit > 10 && (setting.comboLimit -= 2)"></view>
+        {{ setting.comboLimit }}
+        <view class="inc" @tap="setting.comboLimit < 20 && (setting.comboLimit += 2)"></view>
+      </view>
+    </view>
+    <view class="setting">
       <view class="settingKey">无限生命:</view>
       <view class="settingValue" @tap="changeSetting('life')">
         {{ setting.infiniteLife ? '开' : '关' }}
@@ -22,7 +30,13 @@
       </view>
     </view>
     <view class="setting">
-      <view class="settingKey">荣誉击杀:</view>
+      <view class="settingKey">敌人免疫:</view>
+      <view class="settingValue" @tap="changeSetting('immune')">
+        {{ setting.immune ? '开' : '关' }}
+      </view>
+    </view>
+    <view class="setting">
+      <view class="settingKey">净化敌人:</view>
       <view class="settingValue" @tap="changeSetting('honor')">
         {{ setting.honor ? '开' : '关' }}
       </view>
@@ -46,13 +60,13 @@ const { setting, changeSetting } = _
   justify-content: center;
   .setting {
     width: 360px;
-    height: 60px;
+    height: 50px;
     display: flex;
     color: #ccc;
     font-weight: 600;
     text-align: center;
     font-size: 26px;
-    line-height: 60px;
+    line-height: 50px;
 
     .settingKey {
       width: 200px;
@@ -69,13 +83,13 @@ const { setting, changeSetting } = _
       .dec,
       .inc {
         width: 60px;
-        height: 60px;
-        background-color: red;
+        height: 50px;
+        background-color: #aaa;
 
-        clip-path: path('M 20 30 L 40 20 L 40 40 z');
+        clip-path: path('M 20 25 L 40 15 L 40 35 z');
       }
       .inc {
-        clip-path: path('M 40 30 L 20 20 L 20 40 z');
+        clip-path: path('M 40 25 L 20 15 L 20 35 z');
       }
     }
   }

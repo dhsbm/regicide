@@ -5,7 +5,7 @@ import _ from '@/modules'
  * @return {Promise<void>}
  */
 const toPhase2 = async () => {
-  const { data, gradualChange, shuffle, recoverTransition, drawCard, toPhase3, getCount } = _
+  const { data, setting, gradualChange, shuffle, recoverTransition, drawCard, toPhase3, getCount } = _
 
   data.phase = 2
   // 黑红梅方 4花色
@@ -18,7 +18,7 @@ const toPhase2 = async () => {
     data.handSet.delete(card)
   }
   // 清除boss的效果
-  effect[data.boss.charCodeAt(0) - 97] = 0
+  setting.immune && (effect[data.boss.charCodeAt(0) - 97] = 0)
 
   // 梅花，伤害翻倍
   if (effect[2] == 1) sum *= 2
