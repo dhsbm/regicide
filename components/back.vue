@@ -4,15 +4,15 @@
 
 <script setup>
 const back = () => {
-  // uni.navigateBack({
-  //   animationType: 'pop-out',
-  //   animationDuration: 2000,
-  // })
-  uni.navigateTo({
-    url: `../index/index`,
-    animationType: 'pop-in',
+  uni.navigateBack({
+    animationType: 'pop-out',
     animationDuration: 2000,
   })
+  // uni.navigateTo({
+  //   url: `../index/index`,
+  //   animationType: 'pop-in',
+  //   animationDuration: 2000,
+  // })
 }
 </script>
 
